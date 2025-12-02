@@ -359,31 +359,31 @@ body {
 }
 
 .year-summary__media.year-summary__media--photo2 {
-    background: url("/assets/photo2.png") center center / cover no-repeat;
+    background: url("photo2.png") center center / cover no-repeat;
 }
 
 .year-summary__media.year-summary__media--photo3 {
-    background: url("/assets/photo3.png") center center / cover no-repeat;
+    background: url("photo3.png") center center / cover no-repeat;
 }
 
 .year-summary__media.year-summary__media--photo4 {
-    background: url("/assets/photo4.png") center center / cover no-repeat;
+    background: url("photo4.png") center center / cover no-repeat;
 }
 
 .year-summary__media.year-summary__media--photo5 {
-    background: url("/assets/photo5.png") center center / cover no-repeat;
+    background: url("photo5.png") center center / cover no-repeat;
 }
 
 .year-summary__media.year-summary__media--photo6 {
-    background: url("/assets/photo6.png") center center / cover no-repeat;
+    background: url("photo6.png") center center / cover no-repeat;
 }
 
 .year-summary__media.year-summary__media--photo7 {
-    background: url("/assets/photo7.png") center center / cover no-repeat;
+    background: url("photo7.png") center center / cover no-repeat;
 }
 
 .year-summary__media.year-summary__media--photo8 {
-    background: url("/assets/photo8.png") center center / cover no-repeat;
+    background: url("photo8.png") center center / cover no-repeat;
 }
 
 /* скрытый аудиоплеер — только звук */
@@ -973,5 +973,6 @@ body {
     }
 
 }
+
 
 
