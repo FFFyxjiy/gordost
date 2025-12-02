@@ -355,7 +355,7 @@ body {
 }
 
 .year-summary__media.year-summary__media--photo1 {
-    background: url("/assets/photo1.png") center center / cover no-repeat;
+    background: url("photo1.png") center center / cover no-repeat;
 }
 
 .year-summary__media.year-summary__media--photo2 {
@@ -973,3 +973,4 @@ body {
     }
 
 }
+
