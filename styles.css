@@ -344,7 +344,7 @@ body {
     border-radius: 26px;
     overflow: hidden;
 
-    background: url("img/g25-poster.png") center center / cover no-repeat;
+    background: url("g25-poster.png") center center / cover no-repeat;
 
     /* изначально скрыта, плавно проявится вместе с карточкой */
     opacity: 0;
@@ -973,4 +973,5 @@ body {
     }
 
 }
+
 
