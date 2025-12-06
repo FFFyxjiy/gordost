@@ -1,6 +1,6 @@
 // Номинации, за которые голосуем (дополнительные)
 
-const VOTING_DEADLINE = new Date("2025-12-06T23:59:00+03:00");
+const VOTING_DEADLINE = new Date("2025-12-05T23:59:00+03:00");
 const VOTE_NOMINATIONS = [
     {
         id: "meme_person",
@@ -29,6 +29,45 @@ const VOTE_NOMINATIONS = [
     },
 ];
 
+
+function showWinners() {
+    // Находим секцию голосования
+    const pollSection = document.querySelector('.poll');
+    if (!pollSection || pollSection.classList.contains('winners-shown')) return;
+
+    pollSection.classList.add('winners-shown'); // Помечаем, что победители показаны
+
+    // ДАННЫЕ ПОБЕДИТЕЛЕЙ (ОБЯЗАТЕЛЬНО ЗАМЕНИТЕ [ИМЯ ПОБЕДИТЕЛЯ])
+    const WINNERS_DATA = [
+        { id: "meme_person", name: "Человек-мем года" },
+        { id: "charisma_person", name: "Человек-харизма года" },
+    ];
+
+    let winnersHTML = '<h2 class="poll__title winners-title">НОМИНАЦИИ КОТОРЫЕ ВОЙДУТ В ПРОГРАММУ AWARD 2025</h2>';
+    winnersHTML += '<div class="winner-list">';
+
+    WINNERS_DATA.forEach(winner => {
+        // Находим оригинальное описание (tagline) из VOTE_NOMINATIONS
+        const nominationData = VOTE_NOMINATIONS.find(n => n.id === winner.id);
+        const tagline = nominationData ? nominationData.tagline : '';
+
+        winnersHTML += `
+            <article class="winner-card winner-card--${winner.id}">
+                <div class="winner-card__badge">Победитель</div> 
+                <div class="winner-card__body">
+                    <h3 class="winner-card__nomination">${winner.name}</h3>
+                    <p class="winner-card__tagline">${tagline}</p>
+                </div>
+            </article>
+        `;
+    });
+
+    winnersHTML += '</div>';
+
+    // Заменяем содержимое секции голосования на список победителей
+    pollSection.innerHTML = winnersHTML;
+}
+
 function startCountdown() {
     const daysEl = document.getElementById("cd-days");
     const hoursEl = document.getElementById("cd-hours");
@@ -44,11 +83,17 @@ function startCountdown() {
         const diff = target - now;
 
         if (diff <= 0) {
-            daysEl.textContent = "00";
-            hoursEl.textContent = "00";
-            minutesEl.textContent = "00";
-            secondsEl.textContent = "00";
-            countdownWrapper.classList.add("countdown--finished");
+            // Проверяем, не меняли ли мы уже контент, чтобы не делать это каждую секунду
+            if (!countdownWrapper.classList.contains("countdown--finished")) {
+                countdownWrapper.classList.add("countdown--finished");
+
+                // ЗАМЕНЯЕМ всё содержимое таймера на нужные надписи
+                countdownWrapper.innerHTML = `
+                    <div class="countdown__finished-text">Голосование за номинации окончено</div>
+                    
+                `;
+            }
+            showWinners();
             return;
         }
 
