@@ -701,6 +701,82 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
+.next-countdown-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.next-countdown {
+    max-width: 900px;
+    margin: 0 auto;
+    /* Визуально делаем его похожим на главный таймер, но чуть крупнее */
+    background: rgba(14, 7, 3, 0.9);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    box-shadow: 0 0 40px rgba(255, 122, 26, 0.3);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.next-countdown__label {
+    font-size: 16px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+}
+
+.next-countdown__values {
+    display: flex;
+    gap: 20px;
+}
+
+.next-countdown__item {
+    text-align: center;
+}
+
+.next-countdown__item span:first-child {
+    display: block;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--accent); /* Оранжевые цифры */
+}
+
+.next-countdown__unit {
+    display: block;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+}
+
+/* Стили после окончания второго таймера */
+.next-countdown.countdown--finished {
+    background: var(--accent-deep); /* Красный акцент */
+    border-color: #ffffff;
+    box-shadow: 0 0 50px rgba(255, 75, 31, 0.6);
+    padding: 40px 30px;
+}
+
+.next-countdown__finished-title {
+    font-size: 36px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+}
+
+.next-countdown__finished-text {
+    font-size: 16px;
+    color: #ffffff;
+}
+
 /* MAIN */
 
 .main {
@@ -1035,6 +1111,22 @@ body {
         font-size: 12px;
     }
 
+    .next-countdown {
+        padding: 20px;
+    }
+    .next-countdown__values {
+        gap: 10px;
+    }
+    .next-countdown__item span:first-child {
+        font-size: 32px;
+    }
+    .next-countdown__label, .next-countdown__unit {
+        font-size: 11px;
+    }
+    .next-countdown__finished-title {
+        font-size: 24px;
+    }
+
     /* Инфо‑блок снизу */
 
     .info {
@@ -1109,3 +1201,5 @@ body {
     }
 
 }
+
+
