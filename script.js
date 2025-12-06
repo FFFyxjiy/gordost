@@ -1,6 +1,7 @@
 // Номинации, за которые голосуем (дополнительные)
 
 const VOTING_DEADLINE = new Date("2025-12-05T23:59:00+03:00");
+const NOMINEES_VOTING_START = new Date("2025-12-10T00:00:00+03:00");
 const VOTE_NOMINATIONS = [
     {
         id: "meme_person",
@@ -107,6 +108,49 @@ function startCountdown() {
         hoursEl.textContent = String(hours).padStart(2, "0");
         minutesEl.textContent = String(minutes).padStart(2, "0");
         secondsEl.textContent = String(secs).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
+
+function startNomineesCountdown() {
+    const countdownWrapper = document.getElementById("next-countdown");
+    if (!countdownWrapper) return;
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const target = NOMINEES_VOTING_START.getTime();
+        const diff = target - now;
+
+        // Если время вышло, показываем сообщение о начале
+        if (diff <= 0) {
+            if (!countdownWrapper.classList.contains("countdown--finished")) {
+                countdownWrapper.classList.add("countdown--finished");
+                countdownWrapper.innerHTML = `
+                    <div class="next-countdown__finished-title">ГОЛОСОВАНИЕ НАЧАЛОСЬ!</div>
+                    <div class="next-countdown__finished-text">Жми кнопку "Голосовать" выше!</div>
+                `;
+            }
+            return;
+        }
+
+        // Расчет времени (дни, часы, минуты, секунды)
+        const seconds = Math.floor(diff / 1000);
+        const days = Math.floor(seconds / (60 * 60 * 24));
+        const hours = Math.floor((seconds % (60 * 60 * 24)) / (60 * 60));
+        const minutes = Math.floor((seconds % (60 * 60)) / 60);
+        const secs = seconds % 60;
+
+        const daysEl = document.getElementById("next-cd-days");
+        const hoursEl = document.getElementById("next-cd-hours");
+        const minutesEl = document.getElementById("next-cd-minutes");
+        const secondsEl = document.getElementById("next-cd-seconds");
+
+        if (daysEl) daysEl.textContent = String(days).padStart(2, "0");
+        if (hoursEl) hoursEl.textContent = String(hours).padStart(2, "0");
+        if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, "0");
+        if (secondsEl) secondsEl.textContent = String(secs).padStart(2, "0");
     }
 
     updateCountdown();
@@ -566,6 +610,7 @@ function setupSummaryToggle() {
 
 document.addEventListener("DOMContentLoaded", function () {
     startCountdown();
+    startNomineesCountdown();
     renderCandidates();
     setupSummaryToggle();
 });
