@@ -503,6 +503,99 @@ body {
 }
 
 
+/* Секция победителей */
+
+.winner-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.winners-title {
+    text-align: center;
+    color: var(--accent);
+    margin-bottom: 30px;
+    font-size: 32px;
+    text-transform: uppercase;
+}
+
+.winner-card {
+    position: relative;
+    overflow: hidden;
+
+    /* Фон с легким градиентом для глубины */
+    background: linear-gradient(145deg, var(--bg-card) 5%, rgba(20, 10, 5, 0.95) 100%);
+
+    padding: 30px;
+    border-radius: var(--radius-lg);
+    transition: all 0.3s ease;
+    text-align: center;
+
+    /* Золотой акцент: толстая рамка сверху */
+    border-top: 5px solid #ffb300;
+    box-shadow:
+            0 0 50px rgba(255, 179, 0, 0.25), /* Светящийся золотой эффект */
+            var(--shadow-strong);
+}
+
+.winner-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow:
+            0 15px 45px rgba(255, 179, 0, 0.4), /* Более сильное свечение при наведении */
+            var(--shadow-strong);
+}
+
+/* Заголовок номинации */
+.winner-card__nomination {
+    font-size: 26px;
+    font-weight: 800;
+    color: #ffffff; /* Белый, чтобы лучше выделялся */
+    margin-bottom: 5px;
+}
+
+/* Описание номинации */
+.winner-card__tagline {
+    font-size: 14px;
+    color: var(--text-muted);
+    min-height: 40px; /* Чтобы карточки были одинаковой высоты */
+}
+
+.winner-card__badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #ffb300; /* Золотой фон */
+    color: #2e1d0d;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    border-radius: var(--radius-md);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.winner-card__tagline {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.winner-card__result {
+    display: none;
+}
+
+.winner-card__name {
+    display: block;
+    font-size: 20px;
+    font-weight: 900;
+    color: #ffb300; /* Золотой цвет */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+
 
 /* COUNTDOWN */
 
@@ -567,6 +660,45 @@ body {
     opacity: 0.6;
     border-color: rgba(150, 150, 150, 0.6);
     box-shadow: 0 0 0 rgba(0, 0, 0, 0.5);
+}
+
+.countdown.countdown--finished {
+    flex-direction: column;       /* Ставим текст друг под другом */
+    align-items: center;
+    justify-content: center;
+    padding: 20px 40px;           /* Больше воздуха */
+    gap: 8px;
+    opacity: 1;                   /* Убираем прозрачность, делаем ярким */
+    background: rgba(12, 5, 2, 0.85); /* Чуть темнее фон */
+    border-color: var(--accent);  /* Оранжевая рамка */
+    box-shadow:
+            0 0 30px rgba(255, 122, 26, 0.15),
+            0 14px 36px rgba(0, 0, 0, 0.85);
+}
+
+/* Маленькая надпись "Голосование... окончено" */
+.countdown__finished-text {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* Большая надпись "AWARD 2025" */
+.countdown__finished-title {
+    font-size: 32px;              /* Крупный размер */
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    line-height: 1.1;
+    color: #ffffff;
+    text-align: center;
+
+    /* Добавляем оранжевый градиент на текст */
+    background: linear-gradient(135deg, #ffffff 20%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* MAIN */
@@ -881,6 +1013,10 @@ body {
         gap: 10px;
     }
 
+    .countdown__finished-title {
+        font-size: 24px;
+    }
+
     .candidate {
         padding: 12px 12px 10px;
         border-radius: 14px;
@@ -973,6 +1109,3 @@ body {
     }
 
 }
-
-
-
