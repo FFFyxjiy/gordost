@@ -1,7 +1,7 @@
 // Номинации, за которые голосуем (дополнительные)
 
 const VOTING_DEADLINE = new Date("2025-12-05T23:59:00+03:00");
-const NOMINEES_VOTING_START = new Date("2025-12-10T00:00:00+03:00");
+const NOMINEES_VOTING_START = new Date("2025-12-11T00:00:00+03:00");
 const VOTE_NOMINATIONS = [
     {
         id: "meme_person",
